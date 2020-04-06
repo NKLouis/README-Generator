@@ -78,10 +78,6 @@ inquirer
         tests: answer.tests,
         questions: answer.questions,
         email: api.getUser
-
-        
-
-
     }
 
     fs.writeFile("../README.md",JSON.stringify(newResponse), function(err) {
@@ -99,7 +95,5 @@ inquirer
   
 console.log(api.getUser);
 
-//console.log(api.response.data.email);
-//console.log(api.avatar_url);
 
 
