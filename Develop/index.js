@@ -57,7 +57,7 @@ inquirer
         {
                     
             type: "input",
-            message: "What is your Questions?",
+            message: "Questions?",
             name: "questions"
         }
         
@@ -77,22 +77,44 @@ inquirer
         contributing: answer.contributing,
         tests: answer.tests,
         questions: answer.questions,
-        email: api.getUser
+        gitHub: api.getUser
     }
+    const fileData =
+    `
+    ##${"Username: " +  newResponse.username}
 
-    fs.writeFile("../README.md",JSON.stringify(newResponse), function(err) {
+    ##${"Title: " + newResponse.title}
 
+    ##${"Description: "+ newResponse.description}
+
+    ##${"Table of Contents: "+ newResponse.contents}
+
+    ##${"Installation: " + newResponse.installation}
+
+    ##${"Usage: "+ newResponse.usage}
+
+    ##${"License: "+ newResponse.license}
+
+    ##${"Contributing: "+ newResponse.contributing}
+
+    ##${"Tests: "+ newResponse.tests}
+
+    ##${"Questions: "+ newResponse.questions}
+      
+      `;
+      
+
+      fs.writeFile("../README.md", fileData, function(err) {
         if (err) {
-          return console.log(err);
-        }
+            return console.log(err);
+          }
       
-        console.log("Success!");
-      
-      })
+          console.log("Success!");
+        
+        })
+
 });
-
-
-  
+ 
 console.log(api.getUser);
 
 
