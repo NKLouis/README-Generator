@@ -82,23 +82,14 @@ inquirer
     const fileData =
     `
     ##${"Username: " +  newResponse.username}
-
     ##${"Title: " + newResponse.title}
-
     ##${"Description: "+ newResponse.description}
-
     ##${"Table of Contents: "+ newResponse.contents}
-
     ##${"Installation: " + newResponse.installation}
-
     ##${"Usage: "+ newResponse.usage}
-
     ##${"License: "+ newResponse.license}
-
     ##${"Contributing: "+ newResponse.contributing}
-
     ##${"Tests: "+ newResponse.tests}
-
     ##${"Questions: "+ newResponse.questions}
       
       `;
@@ -116,6 +107,4 @@ inquirer
 });
  
 console.log(api.getUser);
-
-
 
