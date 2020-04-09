@@ -105,9 +105,9 @@ inquirer.prompt([
   function generateMarkdown(response, res) {
 
     const usersInfo = `
-    <img align="left" src= "https://img.shields.io/badge/License-${response.license}-green">
-
     
+    <a href="https://img.shields.io/badge/License-${response.license}-green">Badge</a>
+
     
     ${res.data.avatar_url}
     
