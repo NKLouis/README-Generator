@@ -2,7 +2,7 @@ require('dotenv').config()
 const fs = require("fs");
 const axios = require("axios");
 const inquirer = require("inquirer");
-//const genMD = require('./generateMarkdown');
+//const MD = require('./generateMarkdown');
 
 
 
@@ -77,8 +77,10 @@ inquirer.prompt([
  
     });
 
+    
 };
  questions();
+ 
  
  function githubAPICall(userName, response) {
     console.log(userName);
@@ -93,19 +95,44 @@ inquirer.prompt([
         .then(function (res) {
           console.log(res.data);
   
-          //generateMarkdown(res, response);
+          generateMarkdown(response, res)
         })
   
         .catch(error => console.log(error));
     
   }
 
+  function generateMarkdown(response, res) {
 
-   // fs.writeFile("../README.md", fileData, function(err) {
-        //     if (err) {
-        //         return console.log(err);
-        //       }
-          
-        //       console.log("Success!");
-            
-        //     })
+    const usersInfo = `
+    <img align="left" src= "https://img.shields.io/badge/License-${response.license}-green">
+
+    
+    
+    ${res.data.avatar_url}
+    
+    ${response.title}
+    ${response.description}
+    ${response.contents}
+    ${response.installation}
+    ${response.usage}
+    ${response.license}
+    ${response.contributor}
+    ${response.tests}
+    ${response.linkedin}
+    ${response.portfolio}
+    ${response.email} 
+  `
+  
+    fs.writeFile("gen-README.md", usersInfo, function (err) {
+  
+      if (err) {
+        return console.log(err);
+      }
+  
+      console.log("Success!");
+  
+    });
+  
+  
+  };
