@@ -2,11 +2,12 @@ require('dotenv').config()
 const fs = require("fs");
 const axios = require("axios");
 const inquirer = require("inquirer");
-var api = require("./utils/api.js")
+//const genMD = require('./generateMarkdown');
 
 
-inquirer
-    .prompt([
+
+function questions() {
+inquirer.prompt([
          {
             type: "input",
          message: "What is your GitHub username?",
@@ -30,81 +31,81 @@ inquirer
         {
 
             type: "input",
-            message: "What is your Installation?",
+            message: "Installation requirements?",
             name: "installation"
         },
         {
             type: "input",
-            message: "What is your Usage?",
+            message: "Please enter Usage?",
             name: "usage"
         },
         {
             type: "input",
-            message: "What is your License?",
+            message: "Please enter License?",
             name: "license"
         },
         {
             type: "input",
-            message: "What does the user need to know about Contributing to the repo?",
-            name: "contributing"
-        },
-        {
-        
-            type: "input",
-            message: "What is your Tests?",
-            name: "tests"
+            message: "Contributors?",
+            name: "contributor"
         },
         {
                     
             type: "input",
-            message: "Questions?",
-            name: "questions"
+            message: "Testes?",
+            name: "tests"
+        },
+        {
+        
+            type: "input",
+            message: "what is your LinkedIn username?",
+            name: "linkedin"
+        },
+        {
+            type: "input",
+            message: "What is your portfolio URL?",
+            name: "portfolio"
         }
         
   ])
 
+    .then(function(response) {
 
-.then(function(answer) {
-    console.log(answer.questions);
-    const newResponse = {
-        username: answer.username,
-        title: answer.title,
-        description: answer.description,
-        contents: answer.contents,
-        installation: answer.installation,
-        usage: answer.usage,
-        license: answer.license,
-        contributing: answer.contributing,
-        tests: answer.tests,
-        questions: answer.questions,
-        gitHub: api.getUser
-    }
-    const fileData =
-    `
-    ##${"Username: " +  newResponse.username}
-    ##${"Title: " + newResponse.title}
-    ##${"Description: "+ newResponse.description}
-    ##${"Table of Contents: "+ newResponse.contents}
-    ##${"Installation: " + newResponse.installation}
-    ##${"Usage: "+ newResponse.usage}
-    ##${"License: "+ newResponse.license}
-    ##${"Contributing: "+ newResponse.contributing}
-    ##${"Tests: "+ newResponse.tests}
-    ##${"Questions: "+ newResponse.questions}
-      
-      `;
-      
+    let userName = response.username;
 
-      fs.writeFile("../README.md", fileData, function(err) {
-        if (err) {
-            return console.log(err);
-          }
-      
-          console.log("Success!");
-        
-        })
-
-});
+    githubAPICall(userName, response);
  
-console.log(api.getUser);
+    });
 
+};
+ questions();
+ 
+ function githubAPICall(userName, response) {
+    console.log(userName);
+  
+    const queryURL = `https://api.github.com/users/` + userName;
+  
+    
+      axios
+        .get(queryURL, {
+          headers: { "Authorization": `token ${process.env.GH_TOKEN}` }
+        })
+        .then(function (res) {
+          console.log(res.data);
+  
+          //generateMarkdown(res, response);
+        })
+  
+        .catch(error => console.log(error));
+    
+  }
+
+
+   // fs.writeFile("../README.md", fileData, function(err) {
+        //     if (err) {
+        //         return console.log(err);
+        //       }
+          
+        //       console.log("Success!");
+            
+        //     })
