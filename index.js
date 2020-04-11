@@ -2,31 +2,24 @@ require('dotenv').config()
 const fs = require("fs");
 const axios = require("axios");
 const inquirer = require("inquirer");
-//const MD = require('./generateMarkdown');
-
 
 
 function questions() {
 inquirer.prompt([
          {
             type: "input",
-         message: "What is your GitHub username?",
+         message: "Please enter your GitHub username?",
          name: "username"
          },
         {
             type: "input",
-            message: "What is your project's title?",
+            message: "Please enter your project's name?",
             name: "title"
         },
         {
             type: "input",
             message: "Please write a short description of your project?",
             name: "description"
-        },
-        {
-            type: "input",
-            message: "What is your table of contents?",
-            name: "contents"
         },
         {
 
@@ -40,10 +33,12 @@ inquirer.prompt([
             name: "usage"
         },
         {
-            type: "input",
-            message: "Please enter License?",
+            type: "checkbox",
+            message: "What license do you want to use?",
+            choices: ["Apache","BSD","GPL","ISC","MIT" ],
             name: "license"
         },
+        
         {
             type: "input",
             message: "Contributors?",
@@ -52,18 +47,24 @@ inquirer.prompt([
         {
                     
             type: "input",
-            message: "Testes?",
-            name: "tests"
+            message: "Tests?",
+            name: "test"
+        },
+        {
+            type: "checkbox",
+            message: "What technologies did you use?",
+            choices: [" Node.Js"," JavaScript"," jQuery"," HTML"," CSS","Bootstrap","Media Queries"," MySQL"," APIs"," GitHub"," GIT"," Heroku"," Express"," React.js"," React"],
+            name: "technology"
         },
         {
         
             type: "input",
-            message: "what is your LinkedIn username?",
+            message: "Please enter your LinkedIn username?",
             name: "linkedin"
         },
         {
             type: "input",
-            message: "What is your portfolio URL?",
+            message: "Please enter your portfolio URL?",
             name: "portfolio"
         }
         
@@ -103,55 +104,47 @@ inquirer.prompt([
   }
 
   function generateMarkdown(response, res) {
-
-    const getInfo = `
+const getInfo = `
+<img src= "https://img.shields.io/badge/License-${response.license}-green">
+<h1> ${response.title}</h1>
+<img src="${res.data.avatar_url}">
     
-    <img src= "https://img.shields.io/badge/License-${response.license}-green">
-
-    <h1> ${response.title}</h1>
- 
-    <img src="${res.data.avatar_url}">
-    
-
-
-    <h2> Table of Contents </h2>
-    <li><a href="#title">Title</a></li>
-    <li><a href="#description">Description</a></li>  
-    <li><a href="#contents">Contents</a></li> 
-    <li><a href="#installation">Installation</a></li> 
-    <li><a href="#usage">Usage</a></li> 
-    <li><a href="#license">License</a></li> 
-    <li><a href="#contributor">Contributor</a></li>   
-    <li><a href="#tests">Tests</a></li> 
+<h2> Table of Contents </h2>
+<li><a href="#title">Title</a></li>
+<li><a href="#description">Description</a></li>  
+<li><a href="#contents">Contents</a></li> 
+<li><a href="#installation">Installation</a></li> 
+<li><a href="#usage">Usage</a></li> 
+<li><a href="#license">License</a></li> 
+<li><a href="#contributor">Contributor</a></li>   
+<li><a href="#tests">Tests</a></li> 
   
+<h2 id="description"> Description </h2>
+<p>${response.description}</p>
 
+<h2 id="description"> installation </h2>
+<p>${response.installation}</p>
 
-    <h2 id="description"> Description </h2>
-    <p>${response.description}</p>
+<h2 id="description"> usage </h2>
+<p>${response.usage}</p>
 
-    <h2 id="description"> contents </h2>
-    <p>${response.contents}</p>
+<h2 id="description"> license </h2>
+<p>${response.license}</p>
 
-    <h2 id="description"> installation </h2>
-    <p>${response.installation}</p>
+<h2 id="description"> contributor </h2>
+<p>${response.contributor}</p>
 
-    <h2 id="description"> usage </h2>
-    <p>${response.usage}</p>
+<h2 id="description"> tests </h2>
+<p>${response.tests}</p>
 
-    <h2 id="description"> license </h2>
-    <p>${response.license}</p>
+<h2 id="description"> tests </h2>
+<p>${response.technology}</p>
 
-    <h2 id="description"> contributor </h2>
-    <p>${response.contributor}</p>
+<h2 id="email"> Email </h2>
+<a href= "Email:${res.data.email}">${res.data.email}</a> 
 
-    <h2 id="description"> tests </h2>
-    <p>${response.tests}</p>
-
-    <h2 id="email"> Email </h2>
-    <a href= "Email:${res.data.email}">${res.data.email}</a> 
-
-    <h2 id="portfolio"> Portfolio </h2>
-    <a href= "${res.data.blog}">Portfolio</a> `
+<h2 id="portfolio"> Portfolio </h2>
+<a href= "${res.data.blog}">Portfolio</a> `
 
 
     fs.writeFile("gen-README.md", getInfo, function (err) {
