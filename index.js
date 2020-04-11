@@ -57,12 +57,6 @@ inquirer.prompt([
             name: "technology"
         },
         {
-        
-            type: "input",
-            message: "Please enter your LinkedIn username?",
-            name: "linkedin"
-        },
-        {
             type: "input",
             message: "Please enter your portfolio URL?",
             name: "portfolio"
@@ -135,7 +129,7 @@ const getInfo = `
 <p>${response.contributor}</p>
 
 <h2 id="description"> tests </h2>
-<p>${response.tests}</p>
+<p>${response.test}</p>
 
 <h2 id="description"> tests </h2>
 <p>${response.technology}</p>
