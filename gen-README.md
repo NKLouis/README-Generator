@@ -12,16 +12,12 @@
 <li><a href="#contributor">Contributor</a></li>   
 <li><a href="#test">Tests</a></li> 
 <li><a href="#technology">Technology</a></li>   
-  
-  
-  
+   
 <h2 id="description"> Description </h2>
-<p>this is testing</p>
-
-![](http://g.recordit.co/vLnCTX8OIY.gif)
+<p>This is a test of my new application</p>
 
 <h2 id="description"> installation </h2>
-<p>testing</p>
+<p>installation</p>
 
 <h2 id="description"> usage </h2>
 <p>testing</p>
@@ -36,8 +32,8 @@
 <p>testing</p>
 
 <h2 id="description"> Technology </h2>
-<p> Node.Js,Bootstrap,Media Queries, MySQL, APIs</p>
+<p> Node.Js, JavaScript, APIs</p>
 
 <h2> Contact </h2>
-<a href= "Email:Naritchayalouis@Gmail.com">Naritchayalouis@Gmail.com</a> 
+<a href= "Naritchayalouis@Gmail.com">Email</a> 
 <a href= "https://nklouis.github.io/Portfolio/">Portfolio</a> 

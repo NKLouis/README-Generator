@@ -5,100 +5,100 @@ const inquirer = require("inquirer");
 
 
 function questions() {
-inquirer.prompt([
-         {
-            type: "input",
-         message: "Please enter your GitHub username?",
-         name: "username"
-         },
-        {
-            type: "input",
-            message: "Please enter your project's name?",
-            name: "title"
-        },
-        {
-            type: "input",
-            message: "Please write a short description of your project?",
-            name: "description"
-        },
-        {
+  inquirer.prompt([
+    {
+      type: "input",
+      message: "Please enter your GitHub username?",
+      name: "username"
+    },
+    {
+      type: "input",
+      message: "Please enter your project's name?",
+      name: "title"
+    },
+    {
+      type: "input",
+      message: "Please write a short description of your project?",
+      name: "description"
+    },
+    {
 
-            type: "input",
-            message: "Installation requirements?",
-            name: "installation"
-        },
-        {
-            type: "input",
-            message: "Please enter Usage?",
-            name: "usage"
-        },
-        {
-            type: "checkbox",
-            message: "What license do you want to use?",
-            choices: ["Apache","BSD","GPL","ISC","MIT" ],
-            name: "license"
-        },
-        
-        {
-            type: "input",
-            message: "Contributors?",
-            name: "contributor"
-        },
-        {
-                    
-            type: "input",
-            message: "Tests?",
-            name: "test"
-        },
-        {
-            type: "checkbox",
-            message: "What technologies did you use?",
-            choices: [" Node.Js"," JavaScript"," jQuery"," HTML"," CSS","Bootstrap","Media Queries"," MySQL"," APIs"," GitHub"," GIT"," Heroku"," Express"," React.js"," React"],
-            name: "technology"
-        },
-        {
-            type: "input",
-            message: "Please enter your portfolio URL?",
-            name: "portfolio"
-        }
-        
+      type: "input",
+      message: "Installation requirements?",
+      name: "installation"
+    },
+    {
+      type: "input",
+      message: "Please enter Usage?",
+      name: "usage"
+    },
+    {
+      type: "checkbox",
+      message: "What license do you want to use?",
+      choices: ["Apache", "BSD", "GPL", "ISC", "MIT"],
+      name: "license"
+    },
+
+    {
+      type: "input",
+      message: "Contributors?",
+      name: "contributor"
+    },
+    {
+
+      type: "input",
+      message: "Tests?",
+      name: "test"
+    },
+    {
+      type: "checkbox",
+      message: "What technologies did you use?",
+      choices: [" Node.Js", " JavaScript", " jQuery", " HTML", " CSS", "Bootstrap", "Media Queries", " MySQL", " APIs", " GitHub", " GIT", " Heroku", " Express", " React.js", " React"],
+      name: "technology"
+    },
+    {
+      type: "input",
+      message: "Please enter your portfolio URL?",
+      name: "portfolio"
+    }
+
   ])
 
-    .then(function(response) {
+    .then(function (response) {
 
-    let userName = response.username;
+      let userName = response.username;
 
-    githubAPICall(userName, response);
- 
+      githubAPICall(userName, response);
+
     });
 
-    
-};
- questions();
- 
- 
- function githubAPICall(userName, response) {
-    console.log(userName);
-  
-    const queryURL = `https://api.github.com/users/` + userName;
-  
-    
-      axios
-        .get(queryURL, {
-          headers: { "Authorization": `token ${process.env.GH_TOKEN}` }
-        })
-        .then(function (res) {
-          console.log(res.data);
-  
-          generateMarkdown(response, res)
-        })
-  
-        .catch(error => console.log(error));
-    
-  }
 
-  function generateMarkdown(response, res) {
-const getInfo = `
+};
+questions();
+
+
+function githubAPICall(userName, response) {
+  console.log(userName);
+
+  const queryURL = `https://api.github.com/users/` + userName;
+
+
+  axios
+    .get(queryURL, {
+      headers: { "Authorization": `token ${process.env.GH_TOKEN}` }
+    })
+    .then(function (res) {
+      console.log(res.data);
+
+      generateMarkdown(response, res)
+    })
+
+    .catch(error => console.log(error));
+
+}
+
+function generateMarkdown(response, res) {
+  const getInfo = `
 <img src= "https://img.shields.io/badge/License-${response.license}-green">
 <h1> ${response.title}</h1>
 <img src="${res.data.avatar_url}">
@@ -112,9 +112,7 @@ const getInfo = `
 <li><a href="#contributor">Contributor</a></li>   
 <li><a href="#test">Tests</a></li> 
 <li><a href="#technology">Technology</a></li>   
-  
-  
-  
+   
 <h2 id="description"> Description </h2>
 <p>${response.description}</p>
 
@@ -137,19 +135,19 @@ const getInfo = `
 <p>${response.technology}</p>
 
 <h2> Contact </h2>
-<a href= "Email:${res.data.email}">${res.data.email}</a> 
+<a href= "${res.data.email}">Email</a> 
 <a href= "${res.data.blog}">Portfolio</a> `
 
 
-    fs.writeFile("gen-README.md", getInfo, function (err) {
-  
-      if (err) {
-        return console.log(err);
-      }
-  
-      console.log("Success!");
-  
-    });
-  
-  
-  };
+  fs.writeFile("gen-README.md", getInfo, function (err) {
+
+    if (err) {
+      return console.log(err);
+    }
+
+    console.log("Success!");
+
+  });
+
+
+};
