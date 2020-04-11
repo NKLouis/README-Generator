@@ -104,17 +104,20 @@ const getInfo = `
 <img src="${res.data.avatar_url}">
     
 <h2> Table of Contents </h2>
-<li><a href="#title">Title</a></li>
+<li><a href="#title">Project</a></li>
 <li><a href="#description">Description</a></li>  
-<li><a href="#contents">Contents</a></li> 
 <li><a href="#installation">Installation</a></li> 
 <li><a href="#usage">Usage</a></li> 
 <li><a href="#license">License</a></li> 
 <li><a href="#contributor">Contributor</a></li>   
-<li><a href="#tests">Tests</a></li> 
+<li><a href="#test">Tests</a></li> 
+<li><a href="#technology">Technology</a></li>   
+  
+  
   
 <h2 id="description"> Description </h2>
 <p>${response.description}</p>
+![](http://g.recordit.co/YdoiX0qKk5.gif)
 
 <h2 id="description"> installation </h2>
 <p>${response.installation}</p>
@@ -131,13 +134,11 @@ const getInfo = `
 <h2 id="description"> tests </h2>
 <p>${response.test}</p>
 
-<h2 id="description"> tests </h2>
+<h2 id="description"> Technology </h2>
 <p>${response.technology}</p>
 
-<h2 id="email"> Email </h2>
+<h2> Contact </h2>
 <a href= "Email:${res.data.email}">${res.data.email}</a> 
-
-<h2 id="portfolio"> Portfolio </h2>
 <a href= "${res.data.blog}">Portfolio</a> `
 
 
