@@ -17,7 +17,8 @@
   
 <h2 id="description"> Description </h2>
 <p>this is testing</p>
-![](http://g.recordit.co/YdoiX0qKk5.gif)
+
+![](http://g.recordit.co/vLnCTX8OIY.gif)
 
 <h2 id="description"> installation </h2>
 <p>testing</p>
@@ -35,7 +36,7 @@
 <p>testing</p>
 
 <h2 id="description"> Technology </h2>
-<p> Node.Js, JavaScript, APIs</p>
+<p> Node.Js,Bootstrap,Media Queries, MySQL, APIs</p>
 
 <h2> Contact </h2>
 <a href= "Email:Naritchayalouis@Gmail.com">Naritchayalouis@Gmail.com</a> 

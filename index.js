@@ -117,7 +117,6 @@ const getInfo = `
   
 <h2 id="description"> Description </h2>
 <p>${response.description}</p>
-![](http://g.recordit.co/YdoiX0qKk5.gif)
 
 <h2 id="description"> installation </h2>
 <p>${response.installation}</p>
