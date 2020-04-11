@@ -135,8 +135,8 @@ function generateMarkdown(response, res) {
 <p>${response.technology}</p>
 
 <h2> Contact </h2>
-<a href= "${res.data.email}">Email</a> 
-<a href= "${res.data.blog}">Portfolio</a> `
+-<a href= "${res.data.email}">Email</a> 
+-<a href= "${res.data.blog}">Portfolio</a> `
 
 
   fs.writeFile("gen-README.md", getInfo, function (err) {

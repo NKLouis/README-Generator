@@ -16,6 +16,8 @@
 <h2 id="description"> Description </h2>
 <p>This is a test of my new application</p>
 
+![](http://g.recordit.co/vLnCTX8OIY.gif)
+
 <h2 id="description"> installation </h2>
 <p>installation</p>
 
@@ -35,5 +37,5 @@
 <p> Node.Js, JavaScript, APIs</p>
 
 <h2> Contact </h2>
-<a href= "Naritchayalouis@Gmail.com">Email</a> 
-<a href= "https://nklouis.github.io/Portfolio/">Portfolio</a> 
+-<a href= "Naritchayalouis@Gmail.com">Email</a> 
+-<a href= "https://nklouis.github.io/Portfolio/">Portfolio</a> 
