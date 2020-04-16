@@ -37,5 +37,6 @@
 <p> Node.Js, JavaScript, APIs</p>
 
 <h2> Contact </h2>
--<a href= "Naritchayalouis@Gmail.com">Email</a> 
--<a href= "https://nklouis.github.io/Portfolio/">Portfolio</a> 
+<a href= "Naritchayalouis@Gmail.com">Email</a> 
+
+<a href= "https://nklouis.github.io/Portfolio/">Portfolio</a> 
