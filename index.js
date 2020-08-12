@@ -101,7 +101,8 @@ function generateMarkdown(response, res) {
   const getInfo = `
 <img src= "https://img.shields.io/badge/License-${response.license}-green">
 <h1> ${response.title}</h1>
-<img src="${res.data.avatar_url}">
+<img align="right" width="120" height="120" src="${res.data.avatar_url}">
+
     
 <h2> Table of Contents </h2>
 <li><a href="#title">Project</a></li>
