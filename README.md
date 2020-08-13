@@ -1,7 +1,7 @@
 
 <img src= "https://img.shields.io/badge/License-MIT-green">
 <h1> README-Generator</h1>
-<img src="https://avatars3.githubusercontent.com/u/58704859?v=4">
+<img align ="right" width="120" height="120" src="https://avatars3.githubusercontent.com/u/58704859?v=4">
     
 <h2> Table of Contents </h2>
 <li><a href="#title">Project</a></li>
